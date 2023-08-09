@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
+        .todo-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #ddd; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>Todo List</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="newItem" placeholder="New Todo" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        <% todoItems.forEach((item, index) => { %>
+            <li class="todo-item">
+                <%= item %>
+                <form action="/delete/<%= index %>" method="POST" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
